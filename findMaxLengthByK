@@ -1,0 +1,24 @@
+// To find max character in a sequence.
+
+const findMaxLengthByK = (data, distinct) => {
+  const dataLength = data.length;
+  const hashMap = {};
+  let max = 0;
+
+  for (let right = 0, left = 0; right < dataLength; right++) {
+    hashMap[data[right]] = hashMap[data[right]] + 1 || 1;
+
+    while (Object.keys(hashMap).length > distinct) {
+      if (--hashMap[data[left]] === 0) {
+        delete hashMap[data[left]];
+      }
+      left++;
+    }
+
+    max = Math.max(max, right - left + 1);
+  }
+
+  return max;
+};
+
+console.log(findMaxLengthByK("arraabbaacca", 2));
