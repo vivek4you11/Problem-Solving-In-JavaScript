@@ -33,6 +33,23 @@ class BST {
     };
     searchTree(this.root);
   }
+  
+  contains(value) {
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (value === currentNode.value) {
+        return true;
+      }
+      if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      }
+      if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      }
+    }
+    return false;
+  }
 }
 
 const bst = new BST(15);
@@ -40,4 +57,4 @@ bst.insertValue(12);
 bst.insertValue(14);
 bst.insertValue(18);
 bst.insertValue(21);
-console.log(bst);
+console.log(bst.contains(188));
