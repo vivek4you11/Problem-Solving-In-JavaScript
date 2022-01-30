@@ -1,0 +1,15 @@
+const rotateArrayByN = (data, stepsToShift) => {
+  // Clockwise Rotation
+  // for (var i = 0; i < stepsToShift; i++) {
+  //   data.push(data.shift());
+  // }
+
+  // Anti-Clockwise Rotation
+  for (var i = 0; i < stepsToShift; i++) {
+    data.unshift(data.pop());
+  }
+
+  return data;
+};
+
+console.log(rotateArrayByN([1, 2, 3, 4, 5], 1));
