@@ -1,0 +1,8 @@
+let months = ["v", "i", "v", "e", "k", "m", "e", "h", "t", "a"];
+      for (let i = 0; i <= months.length - 1; i++) {
+        for (let j = 0; j <= i; j++) {
+          let days = months.splice(0, 1);
+          document.write(days + "  ");
+        }
+        document.write("<br />");
+      }
