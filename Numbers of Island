@@ -1,0 +1,38 @@
+const grid = [
+  ["1", "1", "1", "1", "0"],
+  ["1", "1", "0", "1", "0"],
+  ["1", "1", "0", "0", "0"],
+  ["0", "0", "0", "0", "0"]
+];
+
+const numberOfIsland = (grid) => {
+  let countIsLands = 0;
+
+  for (let rowIndex in grid) {
+    for (let colIndex in grid[rowIndex]) {
+      if (grid[rowIndex][colIndex] === "1") {
+        countIsLands++;
+        teraForm(parseInt(rowIndex), parseInt(colIndex), grid);
+      }
+    }
+  }
+  return countIsLands;
+};
+
+// convert stuff around us to water
+const teraForm = (rowIndex, colIndex, grid) => {
+  if (
+    grid[rowIndex] === undefined ||
+    grid[rowIndex][colIndex] === undefined ||
+    grid[rowIndex][colIndex] === "0"
+  ) {
+    return;
+  }
+  grid[rowIndex][colIndex] = "0";
+  teraForm(rowIndex + 1, colIndex, grid); //bottom
+  teraForm(rowIndex - 1, colIndex, grid); //top
+  teraForm(rowIndex, colIndex + 1, grid); //right
+  teraForm(rowIndex, colIndex - 1, grid); //left
+};
+
+console.log("Results", numberOfIsland(grid));
